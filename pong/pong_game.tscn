@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://pong_game.gd" type="Script" id=1]
+[ext_resource path="res://asset/left_pallete.png" type="Texture" id=2]
+[ext_resource path="res://asset/right_pallete.png" type="Texture" id=3]
+[ext_resource path="res://asset/ball.png" type="Texture" id=4]
+[ext_resource path="res://asset/separator.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9.43138, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.9485, 10 )
+
+[node name="pong_game" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="player" type="RigidBody2D" parent="." index="0"]
+
+position = Vector2( 67, 181.75 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 1
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="Sprite" type="Sprite" parent="player" index="0"]
+
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Sprite" index="0"]
+
+position = Vector2( 0.375, 0.416665 )
+scale = Vector2( 0.490385, 1.55769 )
+shape = SubResource( 1 )
+
+[node name="computer" type="RigidBody2D" parent="." index="1"]
+
+position = Vector2( 574, 179.75 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 1
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="Sprite" type="Sprite" parent="computer" index="0"]
+
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="computer/Sprite" index="0"]
+
+position = Vector2( 0.375, 0.416665 )
+scale = Vector2( 0.490385, 1.55769 )
+shape = SubResource( 1 )
+
+[node name="ball" type="RigidBody2D" parent="computer" index="1"]
+
+position = Vector2( -253, -12.5 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = -1.0
+angular_velocity = 0.0
+angular_damp = -1.0
+
+[node name="Sprite" type="Sprite" parent="computer/ball" index="0"]
+
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="computer/ball/Sprite" index="0"]
+
+position = Vector2( 0.0636597, 0.521378 )
+scale = Vector2( 0.462499, 0.447863 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+
+position = Vector2( 320, 200 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="3"]
+
+build_mode = 0
+polygon = PoolVector2Array( -34.4224, -37.1467, 683.578, -37.1467, 683.578, 434.853, -57.4224, 435.853, -57.4224, 0.853317, 0.577637, 0.853317, 0.577637, 399.853, 640.578, 399.853, 640.578, 1.85332, 0.577637, 0.853317 )
+
+
